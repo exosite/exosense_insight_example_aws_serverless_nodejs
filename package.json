@@ -1,0 +1,31 @@
+{
+  "name": "demo_exosense_insight_claudia",
+  "version": "1.0.0",
+  "description": "This describes an Insight Module that can be added to Murano Exchange.  An Insight Module can implement one or more Insight Functions.  These Insight Functions can then be added to Assets as a Transformation.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "gen-api-spec": "swagger-jsdoc -d swagger/swaggerDef.js && json2yaml ./swagger.json > swagger.yaml",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "swagger-info": {
+    "title": "My Nifty Insight 2",
+    "contact": {
+      "name": "Your Name Here",
+      "email": "YOU@BIZ.com"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "claudia": "^5.4.0",
+    "json2yaml": "^1.1.0",
+    "swagger-jsdoc": "^3.2.6"
+  },
+  "dependencies": {
+    "aws-serverless-express": "^3.3.5",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4"
+  }
+}
