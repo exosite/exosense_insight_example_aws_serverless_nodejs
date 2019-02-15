@@ -121,6 +121,8 @@ HOST="uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com" BASEPATH="/latest" PO
 
 The result file will be `swagger.yaml`.
 
+More avaiable environment variables or generate logic please reference to the file `swagger/swaggerDef.js`
+
 ### 2. Upload swagger.yaml by deploy again
 
 Run
