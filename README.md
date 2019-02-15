@@ -133,7 +133,7 @@ npm run update
 
 ### 3. Test swagger.yaml is avaiable 
 
-Result Swagger YAML now can get from API. The url is 
+Result Swagger YAML now can get from API. You can use this rul when creating Murano Element service `Configuration File URL (YAML) *` field. The url is 
 
 ```
 https://uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com/latest/swagger.yaml
