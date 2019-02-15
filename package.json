@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "gen-api-spec": "swagger-jsdoc -d swagger/swaggerDef.js && json2yaml ./swagger.json > swagger.yaml",
+    "create": "claudia create --handler lambda.handler --deploy-proxy-api --region ap-southeast-1",
+    "update": "claudia update",
+    "gen-api-spec": "swagger-jsdoc -d swagger/swaggerDef.js && cat swagger.json | jq '. | del(.apis)' | json2yaml > swagger.yaml",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "swagger-info": {

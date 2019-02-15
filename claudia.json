@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "demo_exosense_insight_claudia-executor",
+    "name": "demo_exosense_insight_claudia",
+    "region": "ap-southeast-1"
+  },
+  "api": {
+    "id": "uw9mp3g45m",
+    "url": "https://uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com/latest"
+  }
+}

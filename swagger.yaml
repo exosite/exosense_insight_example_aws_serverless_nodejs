@@ -6,22 +6,19 @@
     contact: 
       name: "Your Name Here"
       email: "YOU@BIZ.com"
-  host: "http://undefined:undefined"
-  basePath: "/"
+  host: "uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com:443"
+  basePath: "/latest"
   schemes: 
     - "https"
   consumes: 
     - "application/json"
   produces: 
     - "application/json"
-  apis: 
-    - "./src/route*.js"
-    - "./swagger/definitions.yaml"
   swagger: "2.0"
   paths: 
     /info: 
       get: 
-        operationId: "listInsights"
+        operationId: "info"
         description: "Get some info about this Insight"
         responses: 
           200: 

@@ -1,5 +1,6 @@
 const package = require(__dirname + '/../package.json')
-const host = `http://${process.env.IP}:${process.env.PORT}`;
+
+const host = (process.env.PORT) ? `${process.env.HOST}:${process.env.PORT}` : `${process.env.HOST}`
 
 module.exports = {
   info: {
@@ -13,7 +14,7 @@ module.exports = {
     }
   },
   host: host,       // Host (optional)
-  basePath: '/',    // Base path (optional)
+  basePath: `${process.env.BASEPATH}` || '/',    // Base path (optional)
   schemes: [
       "https"       // Only https is supported.
   ],

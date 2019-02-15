@@ -1,4 +1,5 @@
 'use strict'
+const fs = require('fs')
 const router = require('express').Router()
 const InsightFunctions = require('./functions.js')
 const funcs = new InsightFunctions()
@@ -9,11 +10,21 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/swagger.yaml', (req, res) => {
+    fs.readFile(__dirname + '/../swagger.yaml', (err, data) => {
+        if(err) {
+            return res.status(404).send('File Not Found')
+        }
+
+        return res.type('text/yaml').send(data.toString())
+    })
+})
+
 /**
  * @swagger
  * /info:
  *   get:
- *     operationId: listInsights
+ *     operationId: info
  *     description: Get some info about this Insight
  *     responses:
  *       "200":
