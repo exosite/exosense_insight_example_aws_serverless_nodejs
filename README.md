@@ -7,6 +7,14 @@ And run in AWS API Gateway and Lambda by leverage Caludia.js which help us deplo
 
 The example code also implement ExoSense Insight interface and can generate swagger file that Murano Service needed.
 
+## Tool used
+
+1. aws-cli
+2. Claudia.js to deploy and configure AWS API Gateway and Lambda
+3. swagger-jsdoc to generate swagger.json
+4. jq to modify swagger.json
+5. json2yaml to transform swagger.json to swagger.yaml
+
 ## Deploy to AWS 
 
 ### 1. Preqrequire
