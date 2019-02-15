@@ -52,7 +52,13 @@ Will output file `claudia.json`
 }
 ```
 
+That output api `https://uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com/latest` is your API Gateway base endpoint. It append `/latest` for version control in the API Gateway way.
+
+Note that the Url is not wrtten to the `claudia.json`, you can add to the file manually for later reference.
+
 ### 3. Test api with curl
+
+Claudia.js already set up API Gateway and created AWS Lambda with your code. Now we can test it.
 
 ```
 $ curl --request POST   --url https://uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com/latest/insights   --header 'content-type: application/json'   --data '{
@@ -105,8 +111,6 @@ $ curl --request POST   --url https://uw9mp3g45m.execute-api.ap-southeast-1.amaz
 }
 ```
 
-### 
-
 ## Configure Murano Element
 
 ### 1. Generate YAML spec document for Murano Service
@@ -145,8 +149,47 @@ We can test with curl
 curl https://uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com/latest/swagger.yaml
 ```
 
+### 4. Create Murano Element service 
+
+Use the url `https://uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com/latest/swagger.yaml`
+
+Note that the service name must start with `insight` according to ExoSense's implement. 
+
+### 5. Enable the service in the application
+
+### 6. Now you should can use the insight function in the ExoSense data pipeline transform editor.
+
 ## Run express.js server locally for development
 
 ```
-npm run start
+$ npm run start
+
+> demo_exosense_insight_claudia@1.0.0 start /Users/hialan/Work/demo_exosense_insight_claudia
+> node server.js
+
+Example app listening on port 3000!
+```
+
+Now you can test your API locally on port 3000 with HTTP protocol.
+
+Note that the base path will be `/`, no need to append `/latest` like in API Gateway.
+
+```
+curl --request POST   --url http://localhost:3000/insights   --header 'content-type: application/json'   --data '{
+    "function_id": "addNumbers",
+    "constants": {
+        "adder": 1
+    },
+    "data": [
+        {
+            "value": 1
+        },
+        {
+            "value": 2
+        },
+        {
+            "value": 3
+        }
+    ]
+}'
 ```
