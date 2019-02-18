@@ -23,6 +23,12 @@
     "./src/route*.js",
     "./swagger/definitions.yaml"
   ],
+  "tags": [
+    {
+      "name": "insight",
+      "description": "ExoSense insight function"
+    }
+  ],
   "swagger": "2.0",
   "paths": {
     "/info": {
@@ -571,6 +577,5 @@
   },
   "responses": {},
   "parameters": {},
-  "securityDefinitions": {},
-  "tags": []
+  "securityDefinitions": {}
 }

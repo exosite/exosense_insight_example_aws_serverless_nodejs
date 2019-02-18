@@ -24,5 +24,9 @@ module.exports = {
   produces: [
       "application/json"    // Only JSON is supported.
   ],
-  apis: ['./src/route*.js', './swagger/definitions.yaml'] 
+  apis: ['./src/route*.js', './swagger/definitions.yaml'],
+  tags: [{
+      name: 'insight',
+      description: 'ExoSense insight function',
+  }]
 };

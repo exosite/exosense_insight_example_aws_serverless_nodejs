@@ -163,7 +163,9 @@ curl https://uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com/latest/swagger.
 
 Use the url `https://uw9mp3g45m.execute-api.ap-southeast-1.amazonaws.com/latest/swagger.yaml`
 
-Note that the service name must start with `insight` according to ExoSense's implement. 
+~Note that the service name must start with `insight` according to ExoSense's implement.~
+
+Add insight tag to the swagger file instead.
 
 ### 5. Enable the service in the application
 
