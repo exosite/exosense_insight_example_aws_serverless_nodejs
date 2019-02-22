@@ -205,3 +205,76 @@ curl --request POST   --url http://localhost:3000/insights   --header 'content-t
     ]
 }'
 ```
+
+## Example request
+
+### POST http://localhost:3000/process
+
+Body 
+
+```
+{
+    "id": "d5c52153-e883-4d0f-b8ef-b11d7e3b0eca",
+    "data": [
+        {
+            "value": -53,
+            "ttl": 0,
+            "ts": 1550831402262690,
+            "tags": {
+                "resource": "data_in",
+                "primitive_type": "NUMERIC",
+                "pid": "j3pib1jhzgxu00000",
+                "metric": "Temperature with celsius",
+                "inlet": "0",
+                "identity": "AA006",
+                "data_unit": "DEG_CELSIUS",
+                "data_type": "TEMPERATURE"
+            },
+            "origin": "j3pib1jhzgxu00000.AA006.data_in.Temperature with celsius",
+            "gts": 1550831402000000,
+            "generated": "316dc43c-cd16-457f-aec8-f3bba6597305"
+        }
+    ],
+    "args": {
+        "type": "transform",
+        "name": "Demo Insight Claudia",
+        "insight_id": "insightlambdaclaudiatest01",
+        "function_id": "addNumbers",
+        "constants": {
+            "adder": 5
+        }
+    }
+}
+```
+
+Resoponse
+
+```
+[
+  [
+    {
+      "value": -48,
+      "ttl": 0,
+      "ts": 1550831402262690,
+      "tags": {
+        "resource": "data_in",
+        "primitive_type": "NUMERIC",
+        "pid": "j3pib1jhzgxu00000",
+        "metric": "Temperature with celsius",
+        "inlet": "0",
+        "identity": "AA006",
+        "data_unit": "DEG_CELSIUS",
+        "data_type": "TEMPERATURE"
+      },
+      "origin": "j3pib1jhzgxu00000.AA006.data_in.Temperature with celsius",
+      "gts": 1550831402000000,
+      "generated": "316dc43c-cd16-457f-aec8-f3bba6597305"
+    }
+  ]
+]
+```
+
+## Reference
+
+* [Lua Example Code](https://github.com/exosite/exosense_insight_example_murano_lua)
+* [Channel Data Types and Units](https://exosense.readme.io/docs/channel-configuration#section-channel-data-types-and-units)

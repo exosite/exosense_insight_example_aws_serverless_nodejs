@@ -125,11 +125,11 @@ router.post('/insights', (req, res) => {
  *           $ref: '#/definitions/ErrorResponse'
  */
 router.post('/process', (req, res) => {
-    let args = req.body
-    let {function_id, gropu_id, constants} = args
+    let body = req.body
+    let {args} = body
     let result = {}
 
-    if(function_id == 'addNumbers') {
+    if(args.function_id == 'addNumbers') {
         result = funcs.addNumbers(req.body)
     }
 

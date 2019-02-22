@@ -31,15 +31,17 @@ class InsightFunctions {
     }
 
     addNumbers(body) {
-        let {data, constants} = body
+        let {data, args} = body
 
         // data is a list of datapoints
         let out = data.map(dp => {
-            dp.value += constants.adder
+            // Each signal value in dataOUT should keep the incoming metadata
+            dp.value += args.constants.adder
             return dp
         })
         
-        return out
+        // since ExoSense insight support multiple output signals, so it return Array of Array.
+        return [out]
     }
 }
 
