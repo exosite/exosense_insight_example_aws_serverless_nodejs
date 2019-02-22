@@ -187,23 +187,7 @@ Now you can test your API locally on port 3000 with HTTP protocol.
 Note that the base path will be `/`, no need to append `/latest` like in API Gateway.
 
 ```
-curl --request POST   --url http://localhost:3000/insights   --header 'content-type: application/json'   --data '{
-    "function_id": "addNumbers",
-    "constants": {
-        "adder": 1
-    },
-    "data": [
-        {
-            "value": 1
-        },
-        {
-            "value": 2
-        },
-        {
-            "value": 3
-        }
-    ]
-}'
+curl --request POST   --url http://localhost:3000/insights   --header 'content-type: application/json' --data '{}'
 ```
 
 ## Example request
