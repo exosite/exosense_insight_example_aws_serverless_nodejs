@@ -128,11 +128,12 @@ router.post('/process', (req, res) => {
     let body = req.body
     let {args} = body
     let result = {}
+    let fns = funcs.getFunctions().map(obj => obj.id)
 
-    if(args.function_id == 'addNumbers') {
-        result = funcs.addNumbers(req.body)
+    if(fns.includes(args.function_id)) {
+        result = funcs[args.function_id](req.body)
     }
-
+    
     res.json(result)
 })
 
