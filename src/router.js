@@ -39,7 +39,7 @@ router.get('/swagger.yaml', (req, res) => {
 router.get('/info', (req, res) => {
     res.json({
         name: "My Demo Insight Claudia",
-        decription: "This is a demo ExoSense Insight",
+        description: "This is a demo ExoSense Insight",
         group_id_required: true
     })
 })
@@ -133,7 +133,7 @@ router.post('/process', (req, res) => {
     if(fns.includes(args.function_id)) {
         result = funcs[args.function_id](req.body)
     }
-    
+
     res.json(result)
 })
 
