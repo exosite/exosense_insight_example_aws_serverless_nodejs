@@ -5,9 +5,7 @@ const InsightFunctions = require('./functions.js')
 const funcs = new InsightFunctions()
 
 router.get('/', (req, res) => {
-    res.json({
-        msg: "Hello World!"
-    })
+    res.send('You should see nothing here.')
 })
 
 router.get('/swagger.yaml', (req, res) => {
@@ -18,6 +16,15 @@ router.get('/swagger.yaml', (req, res) => {
 
         return res.type('text/yaml').send(data.toString())
     })
+})
+
+router.post('/echo', (req, res) => {
+    console.log('[INFO] ECHO', JSON.stringify({
+        headers: req.headers,
+        body: req.body
+    }))
+    // return res.json(req.body.data)
+    return res.json({})
 })
 
 /**
@@ -124,15 +131,19 @@ router.post('/insights', (req, res) => {
  *         schema:
  *           $ref: '#/definitions/ErrorResponse'
  */
-router.post('/process', (req, res) => {
+router.post('/process', async (req, res) => {
     let body = req.body
     let {args} = body
     let result = {}
-    let fns = funcs.getFunctions().map(obj => obj.id)
+    let groupId = args.group_id
+    let fns = funcs.getFunctions(groupId).map(obj => obj.id)
 
+    // console.log('[INFO] process-in', JSON.stringify(body))
+    // console.log('[INFO] fns', JSON.stringify(fns))
     if(fns.includes(args.function_id)) {
-        result = funcs[args.function_id](req.body)
+        result = await funcs[args.function_id](body)
     }
+    // console.log('[INFO] process-out', JSON.stringify(result))
 
     res.json(result)
 })
