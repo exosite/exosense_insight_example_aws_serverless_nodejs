@@ -161,16 +161,40 @@ class InsightFunctions {
     }
 
     async mathFormulaTwo(body) {
-        let {data, args} = body
+        let {data, args, history} = body
         let expr = args.constants.formula
         const code = math.compile(expr)
 
+        let hisValue = {
+            inlet: [],
+            outlet: [],
+        }
+
+        // transform history data
+        for(let signalId in history) {
+            let obj = history[signalId][0]
+
+            if(obj.tags && obj.tags.inlet) {
+                hisValue.inlet[obj.tags.inlet] = obj
+            }
+
+            if(obj.tags && obj.tags.outlet) {
+                hisValue.outlet[obj.tags.outlet] = obj
+            }
+        }
+
         // data is a list of datapoints
         let out = data.map(dp => {
-            // Each signal value in dataOUT should keep the incoming metadata
+            // clone values
+            let inlets = [
+                hisValue.inlet[0].value,
+                hisValue.inlet[1].value
+            ]
 
-            // TODO: I can get `x` or `y` at one time ... need a storage to cache last value.
-            dp.value = code.eval({x: dp.value})
+            // replase with current dp value
+            inlets[dp.tags.inlet] = dp.value
+
+            dp.value = code.eval({x: inlets[0], y: inlets[1]})
 
             // not a number
             if(isNaN(dp.value)) {
